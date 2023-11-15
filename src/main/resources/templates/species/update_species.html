@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="Update + ' ' + ${species.getCommonName()}"></title>
+</head>
+<body>
+    <h1>Update <span th:text="${species.getCommonName()}"></span></h1>
+    <form th:action="@{/species/update}" th:object="${species}" method="post">
+        <p th:if="${#fields.hasErrors()}">At least one of the fields is not valid</p>
+        <input type="hidden" th:field="*{id}"/>
+        <p>Common name : <label>
+            <input type="text" th:field="*{commonName}" />
+            <span th:if="${#fields.hasErrors('commonName')}" th:errors="*{commonName}">Field not valid</span>
+        </label></p>
+        <p>Latin name : <label>
+            <input type="text" th:field="*{latinName}" />
+            <span th:if="${#fields.hasErrors('latinName')}" th:errors="*{latinName}">Field not valid</span>
+        </label></p>
+        <p><input type="submit" value="Update"/></p>
+    </form>
+    <a th:href="@{/species}">🔙 Back to list</a>
+</body>
+</html>

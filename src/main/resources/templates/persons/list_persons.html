@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of persons</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Age</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+    </thead>
+    <tbody>
+    <tr th:each="personItem : ${listPersons}">
+        <td th:text="${personItem.getId()}"></td>
+        <td th:text="${personItem.getAge()}"></td>
+        <td th:text="${personItem.getFirstName()}"></td>
+        <td th:text="${personItem.getLastName()}"></td>
+        <td>
+            <a th:href="@{persons/{id}(id=${personItem.getId()})}">📜</a>
+            <a th:href="@{persons/update/{id}(id=${personItem.getId()})}">✏️</a>
+            <a th:href="@{persons/delete/{id}(id=${personItem.getId()})}"
+               onclick="return confirm('Are you sure?')">🗑️
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{persons/create}">➕ Create person</a>
+<a th:href="@{persons/createRandomPerson}">➕ Create 15 random folks</a>
+<a th:href="@{persons/deleteAllPersonWithNoAnimal}"
+   onclick="return confirm('This will delete persons without animals. Are you sure about this?')">🗑️ Delete all persons
+    without animals</a>
+</body>
+</html>

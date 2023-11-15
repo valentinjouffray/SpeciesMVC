@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${animal.getName()}"></title>
+</head>
+<body>
+    <h1 th:text="${animal.getName()}"></h1>
+    <p>Color : <span th:text="${animal.getColor()}"></span></p>
+    <p>Sex : <span th:text="${animal.getSex()}"></span></p>
+    <p>Species : <span th:text="${animal.getSpecies().getCommonName()}"></span></p>
+    <a th:href="@{/animals}">🔙 Back to list</a>
+</body>
+</html>

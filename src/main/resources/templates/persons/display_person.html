@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${person.getLastName()}"></title>
+</head>
+<body>
+    <h1 th:text="${person.getFirstName()} + ' ' + ${person.getLastName()}"></h1>
+    <p>First Name : <span th:text="${person.getFirstName()}"></span></p>
+    <p>Last Name : <span th:text="${person.getLastName()}"></span></p>
+    <p>Age : <span th:text="${person.getAge()}"></span></p>
+    <a th:href="@{/persons}">🔙 Back to list</a>
+</body>
+</html>

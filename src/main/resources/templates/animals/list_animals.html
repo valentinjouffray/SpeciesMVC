@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of persons</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Color</th>
+        <th>Sex</th>
+        <th>Species</th>
+    </thead>
+    <tbody>
+    <tr th:each="animalItem : ${listAnimals}">
+        <td th:text="${animalItem.getId()}"></td>
+        <td th:text="${animalItem.getName()}"></td>
+        <td th:text="${animalItem.getColor()}"></td>
+        <td th:text="${animalItem.getSex()}"></td>
+        <td th:text="${animalItem.getSpecies().getCommonName()}"></td>
+        <td>
+            <a th:href="@{animals/{id}(id=${animalItem.getId()})}">📜</a>
+            <a th:href="@{animals/update/{id}(id=${animalItem.getId()})}">✏️</a>
+            <a th:href="@{animals/delete/{id}(id=${animalItem.getId()})}"
+               onclick="return confirm('Are you sure?')">🗑️
+            </a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{animals/create}">➕ Create animal</a>
+</body>
+</html>

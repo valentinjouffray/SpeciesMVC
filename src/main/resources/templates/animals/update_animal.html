@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update animal</title>
+</head>
+<body>
+<h1>Update <span th:text="${animal.getName()}"></span></h1>
+<form th:action="@{/animals/update}" th:object="${animal}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <p th:if="${#fields.hasErrors()}">At least one of the fields is not valid</p>
+    <p>Name : <label>
+        <input type="text" th:field="*{name}"/>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Field not valid</span>
+    </label></p>
+    <p>Species : <label>
+        <select th:field="*{species}">
+            <option th:each="species : ${speciesList}" th:value="${species.id}"
+                    th:text="${species.commonName}"></option>
+        </select>
+        <span th:if="${#fields.hasErrors('species')}" th:errors="*{species}">Field not valid</span>
+    </label></p>
+    <p>Color : <label>
+        <input type="text" th:field="*{color}"/>
+        <span th:if="${#fields.hasErrors('color')}" th:errors="*{color}">Field not valid</span>
+    </label></p>
+    <p>Sex : <label>
+        <select th:field="*{sex}">
+            <option th:each="sexOption : ${animal.getSexOptions()}" th:value="${sexOption}" th:text="${sexOption}"></option>
+        </select>
+    </label></p>
+    <p><input type="submit" value="Update"/></p>
+</form>
+<a th:href="@{/animals}">🔙 Back to list</a>
+</body>
+</html>

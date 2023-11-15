@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${species.getCommonName()}"></title>
+</head>
+<body>
+    <h1 th:text="${species.getCommonName()}"></h1>
+    <p th:text="${species.getLatinName()}"></p>
+    <a th:href="@{/species}">🔙 Back to list</a>
+</body>
+</html>

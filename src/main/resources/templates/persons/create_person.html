@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xlmns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Person</title>
+</head>
+<body>
+    <h1>Create Species</h1>
+    <form th:action="@{/persons/create}" th:object="${person}" method="post">
+        <p th:if="${#fields.hasErrors()}">At least one of the fields is not valid</p>
+        <p>Age : <label>
+            <input type="text" th:field="*{age}" />
+            <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Field not valid</span>
+        </label></p>
+        <p>First name : <label>
+            <input type="text" th:field="*{firstName}" />
+            <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">Field not valid</span>
+        </label></p>
+        <p>Last name : <label>
+            <input type="text" th:field="*{lastName}" />
+            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Field not valid</span>
+        </label></p>
+        <p><input type="submit" value="Create"/></p>
+    </form>
+<a th:href="@{/persons}">🔙 Back to list</a>
+</body>
+</html>
